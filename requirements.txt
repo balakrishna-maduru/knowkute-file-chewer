@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+llama-index
+sentence-transformers
+llama-cpp-python
+pdfplumber
+python-docx
+openpyxl
+python-pptx
+numpy
+scikit-learn
+loguru
+pytest
+httpx
