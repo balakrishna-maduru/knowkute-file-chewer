@@ -1,9 +1,14 @@
 from pathlib import Path
 from typing import Union
+
 import pdfplumber
 import docx
 import openpyxl
 import pptx
+try:
+    import xlrd
+except ImportError:
+    xlrd = None
 
 class FileProcessor:
     def extract_text(self, file_path: Union[str, Path]) -> str:
@@ -13,8 +18,10 @@ class FileProcessor:
             return self._extract_pdf(file_path)
         elif suffix in [".docx", ".doc"]:
             return self._extract_docx(file_path)
-        elif suffix in [".xlsx", ".xls"]:
+        elif suffix == ".xlsx":
             return self._extract_xlsx(file_path)
+        elif suffix == ".xls":
+            return self._extract_xls(file_path)
         elif suffix in [".pptx", ".ppt"]:
             return self._extract_pptx(file_path)
         elif suffix == ".txt":
@@ -33,11 +40,23 @@ class FileProcessor:
         doc = docx.Document(file_path)
         return "\n".join([p.text for p in doc.paragraphs])
 
+
     def _extract_xlsx(self, file_path: Path) -> str:
         wb = openpyxl.load_workbook(file_path, data_only=True)
         text = []
         for ws in wb.worksheets:
             for row in ws.iter_rows(values_only=True):
+                text.append("\t".join([str(cell) if cell is not None else "" for cell in row]))
+        return "\n".join(text)
+
+    def _extract_xls(self, file_path: Path) -> str:
+        if xlrd is None:
+            raise ImportError("xlrd is required to read .xls files. Please install it with 'poetry add xlrd'.")
+        wb = xlrd.open_workbook(file_path)
+        text = []
+        for sheet in wb.sheets():
+            for row_idx in range(sheet.nrows):
+                row = sheet.row_values(row_idx)
                 text.append("\t".join([str(cell) if cell is not None else "" for cell in row]))
         return "\n".join(text)
 

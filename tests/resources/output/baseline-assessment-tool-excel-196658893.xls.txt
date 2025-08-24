@@ -1,0 +1,106 @@
+	Baseline assessment tool for irritable bowel syndrome in adults: diagnosis and management (NICE clinical guideline CG61)
+	
+	This baseline assessment tool can be used to evaluate whether practice is in line with the recommendations in irritable bowel syndrome in adults: diagnosis and management.  It can also help to plan activity to meet the recommendations.
+	
+	The tool can be used by individual services or organisations. Alternatively, an assessment completed with the involvement of all relevant services or organisations would help to develop a picture of activity in the local area.
+	
+	It should be used in conjunction with irritable bowel syndrome in adults: diagnosis and management (NICE clinical guideline CG61).
+	
+	In the first instance, consider whether the guideline is relevant and record the conclusion in the box below.
+	
+	Is the guideline relevant?
+	
+	
+	The data sheet contains the recommendations from the guideline. Information can be entered about current activity relevant to the recommendation, actions needed to meet the recommendation, deadlines and the names of the responsible leads.  Useful documents can be added as hyperlinks.
+	
+	The table can be adapted to include any other local information that is thought to be useful.
+	
+	If it would be helpful to group the recommendations, for example those that are key priorities for implementation or by deadline, use the filter function in the data menu. 
+	
+	Tools and resources to help put the guidance into practice are available on the NICE website. 
+	
+	
+	National Institute for Health and Care Excellence
+Level 1A, City Tower, Piccadilly Plaza, Manchester M1 4BT; www.nice.org.uk
+
+Copyright
+© National Institute for Health and Care Excellence 2017. All rights reserved. 
+
+	Baseline assessment tool for irritable bowel syndrome in adults: diagnosis and management (NICE clinical guideline CG61)											
+												
+						Number of relevant recommendations	0.0					
+						Number of recommendations met	0.0					
+						Percentage of recommendations met						
+												
+	NICE recommendation	Guideline reference	Year of recommendation	Key priority for implementation	Is the recommendation relevant?	Current activity/evidence	Recommendation met?	Actions needed to implement recommendation	Is there a risk associated with not implementing this recommendation?	Is there a cost or saving?	Deadline	Lead
+	1.1 Diagnosis of IBS											
+	1.1.1 Initial assessment											
+	Healthcare professionals should consider assessment for IBS if the person reports having had any of the following symptoms for at least 6 months:
+• Abdominal pain or discomfort
+• Bloating
+• Change in bowel habit.	1.1.1.1	2008.0	Yes								
+	All people presenting with possible IBS symptoms should be assessed and clinically examined for the following 'red flag' indicators and should be referred to secondary care for further investigation if any are present:
+• signs and symptoms of cancer in line with the NICE guidance on recognition and referral for suspected cancer
+• inflammatory markers for inflammatory bowel disease.	1.1.1.2	2017.0	Yes								
+	This recommendation has been withdrawn.	1.1.1.3	2017.0									
+	A diagnosis of IBS should be considered only if the person has abdominal pain or discomfort that is either relieved by defaecation or associated with altered bowel frequency or stool form. This should be accompanied by at least two of the following four symptoms:
+• altered stool passage (straining, urgency, incomplete evacuation)
+• abdominal bloating (more common in women than men), distension, tension or hardness
+• symptoms made worse by eating
+• passage of mucus. 
+Other features such as lethargy, nausea, backache and bladder symptoms are common in people with IBS, and may be used to support the diagnosis. 	1.1.1.4	2008.0	Yes								
+	1.1.2 Diagnostic tests											
+	In people who meet the IBS diagnostic criteria, the following tests should be undertaken to exclude other diagnoses:
+• full blood count (FBC)
+• erythrocyte sedimentation rate (ESR) or plasma viscosity
+• c-reactive protein (CRP)
+• antibody testing for coeliac disease (endomysial antibodies [EMA] or tissue transglutaminase [TTG]). 	1.1.2.1	2008.0	Yes								
+	The following tests are not necessary to confirm diagnosis in people who meet the IBS diagnostic criteria:
+• ultrasound
+• rigid/flexible sigmoidoscopy
+• colonoscopy; barium enema
+• thyroid function test
+• faecal ova and parasite test
+• faecal occult blood
+• hydrogen breath test (for lactose intolerance and bacterial overgrowth).	1.1.2.2	2008.0	Yes								
+	1.2 Clinical management of IBS											
+	1.2.1 Dietary and lifestyle advice											
+	People with IBS should be given information that explains the importance of self-help in effectively managing their IBS. This should include information on general lifestyle, physical activity, diet and symptom-targeted medication. 	1.2.1.1	2008.0	Yes								
+	Healthcare professionals should encourage people with IBS to identify and make the most of their available leisure time and to create relaxation time.	1.2.1.2	2008.0	No								
+	Healthcare professionals should assess the physical activity levels of people with IBS, ideally using the General Practice Physical Activity Questionnaire (GPPAQ; see appendix J of the full guideline). People with low activity levels should be given brief advice and counselling to encourage them to increase their activity levels.	1.2.1.3	2008.0	No								
+	Diet and nutrition should be assessed for people with IBS and the following general advice given. 
+• Have regular meals and take time to eat.
+• Avoid missing meals or leaving long gaps between eating.
+• Drink at least eight cups of fluid per day, especially water or other non-caffeinated drinks, for example herbal teas.
+• Restrict tea and coffee to three cups per day.
+• Reduce intake of alcohol and fizzy drinks.
+• It may be helpful to limit intake of high-fibre food (such as wholemeal or high-fibre flour and breads, cereals high in bran, and whole grains such as brown rice).
+• Reduce intake of ‘resistant starch’ (starch that resists digestion in the small intestine and reaches the colon intact), which is often found in processed or re-cooked foods.
+• Limit fresh fruit to three portions per day (a portion should be approximately 80g).
+• People with diarrhoea should avoid sorbitol, an artificial sweetener found in sugar-free sweets (including chewing gum) and drinks, and in some diabetic and slimming products.
+• People with wind and bloating may find it helpful to eat oats (such as oat-based breakfast cereal or porridge) and linseeds (up to one tablespoon per day). 	1.2.1.4	2008.0	No								
+	Healthcare professionals should review the fibre intake of people with IBS, adjusting (usually reducing) it while monitoring the effect on symptoms. People with IBS should be discouraged from eating insoluble fibre (for example, bran). If an increase in dietary fibre is advised, it should be soluble fibre such as ispaghula powder or foods high in soluble fibre (for example, oats).	1.2.1.5	2008.0	Yes								
+	People with IBS who choose to try probiotics should be advised to take the product for at least 4 weeks while monitoring the effect. Probiotics should be taken at the dose recommended by the manufacturer.	1.2.1.6	2008.0	No								
+	Healthcare professionals should discourage the use of aloe vera in the treatment of IBS.	1.2.1.7	2008.0	No								
+	If a person’s IBS symptoms persist while following general lifestyle and dietary advice, offer advice on further dietary management. Such advice should:
+• include single food avoidance and exclusion diets (for example, a low FODMAP [fermentable oligosaccharides, disaccharides, monosaccharides and polyols] diet)
+• only be given by a healthcare professional with expertise in dietary management. 	1.2.1.8	2015.0	No								
+	1.2.2 Pharmacological therapy											
+	Healthcare professionals should consider prescribing antispasmodic agents for people with IBS. These should be taken as required, alongside dietary and lifestyle advice.	1.2.2.1	2008.0	No								
+	Laxatives should be considered for the treatment of constipation in people with IBS, but people should be discouraged from taking lactulose.	1.2.2.2	2008.0	No								
+	Consider linaclotide for people with IBS only if:
+• optimal or maximum tolerated doses of previous laxatives from different classes have not helped and
+• they have had constipation for at least 12 months. 
+Follow up people taking linaclotide after 3 months.	1.2.2.3	2015.0	No								
+	Loperamide should be the first choice of antimotility agent for diarrhoea in people with IBS.	1.2.2.4	2008.0	No								
+	People with IBS should be advised how to adjust their doses of laxative or antimotility agent according to the clinical response. The dose should be titrated according to stool consistency, with the aim of achieving a soft, well-formed stool (corresponding to Bristol Stool Form Scale type 4).	1.2.2.5	2008.0	Yes								
+	Consider tricyclic antidepressants (TCAs) as second-line treatment for people with IBS if laxatives, loperamide or antispasmodics have not helped. Start treatment at a low dose (5–10 mg equivalent of amitriptyline), taken once at night, and review regularly. Increase the dose if needed, but not usually beyond 30 mg.	1.2.2.6	2015.0	Yes								
+	Consider selective serotonin reuptake inhibitors (SSRIs) for people with IBS only if TCAs are ineffective.	1.2.2.7	2015.0	No								
+	Take into account the possible side effects when offering TCAs or SSRIs to people with IBS. Follow up people taking either of these drugs for the first time at low doses for the treatment of pain or discomfort in IBS after 4 weeks and then every 6–12 months.	1.2.2.8	2015.0	No								
+	1.2.3 Psychological interventions											
+	Referral for psychological interventions (cognitive behavioural therapy [CBT], hypnotherapy and/or psychological therapy) should be considered for people with IBS who do not respond to pharmacological treatments after 12 months and who develop a continuing symptom profile (described as refractory IBS). 	1.2.3.1	2008.0	No								
+	1.2.4 Complementary and alternative medicine (CAM)											
+	The use of acupuncture should not be encouraged for the treatment of IBS.	1.2.4.1	2008.0	No								
+	The use of reflexology should not be encouraged for the treatment of IBS. 	1.2.4.2	2008.0	No								
+	1.2.5 Follow-up											
+	Follow-up should be agreed between the healthcare professional and the person with IBS, based on the response of the person’s symptoms to interventions. This should form part of the annual patient review. The emergence of any ‘red flag’ symptoms during management and follow-up should prompt further investigation and/or referral to secondary care. 	1.2.5.1	2008.0	No								

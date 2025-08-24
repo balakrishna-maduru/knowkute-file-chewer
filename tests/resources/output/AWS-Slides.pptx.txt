@@ -1,0 +1,135 @@
+AWS Concepts and Lab Intro
+Saptarshi Debroy, Minh Nguyen
+
+Contact: Prasad Calyam
+
+Slides adapted from Hwang, Fox, Dongarra 
+&
+Programming Amazon EC2, Vliet, Paganelli 
+
+Growth of AWS
+AWS “Simple Queue Service” fosters ‘decoupled’ service oriented architecture message passing
+“Developers can move data between distributed components of their applications that perform different tasks, without loosing messages or requiring each component to be always available”
+S3 Storage, EC2 Compute, ELB Load Balancing, RDS Relational Database, SimpleDB
+
+Amazon S3 Growth
+
+1.3 Trillion in 2013
+2
+DynanoDB
+2012
+2006
+AWS Free-Tier  
+3
+Free Usage Restrictions 
+4
+$100 Promotional Code/Student Tier
+You can access -
+AmazonRedshift
+AWSDirectConnect
+AmazonCloudcast
+AWSQueueService
+AmazonVPC
+AmazonElastiCache
+AmazonSES
+AmazonSIS
+AmazonCloudSearch
+AmazonSNS
+AmazonRoute53
+AWSStorageGateway
+AmazonEC2
+AmazonDynamoDB
+ElasticMapReduce
+Amazon ETS
+AmazonSimpleDB
+AmazonRDS
+AWSDataTransfer
+AWSSupportBasic
+AmazonS3
+AmazonCloudFront
+AWSElasticBeanstalk
+AmazonGlacier
+AWS Lambda
+AWS Key Management Service
+CloudWatch
+AWS cognito
+Amazon ELB
+
+Students will receive a $100 AWS usage credit code from me/TA via e-mail
+Although each assigned lab session will only use free-tier resources, the credit is helpful if there are accidental charges or if a student would like to experiment with any advanced AWS capabilities
+If a student exceeds the $100 usage credit, he/she will be responsible for payment of any overage charges
+5
+Example Application Hosting in AWS
+6
+AWS Regions11 regions, 28 availability zones (1 to 6 data centers)…~1.4 million servers worldwide!!
+7
+More Introduction Information about AWS at –  (especially see different networking setups allowed by AWS including ‘Direct Connect’)
+http://www.slideshare.net/AmazonWebServices/03-introduction-to-aws
+
+Interesting must-read article…
+T. Morgan, “A Rare Peek Into The Massive Scale of AWS”, Nov. 2014 
+http://www.enterprisetech.com/2014/11/14/rare-peek-massive-scale-aws/
+
+8
+Lab Steps
+Lab – AWS Account Setup, Services Overview, Resource Discovery, and Instance Setup  
+Purpose of the Lab 
+Understand definitions of various Amazon Web Services (AWS) and their use in cloud computing based web applications that are accessible over the Internet through an AWS account
+Use the AWS account for the discovery, reservation and access of virtual compute/storage infrastructure instances
+9
+AWS Platform Example Deployment
+10
+AWS Execution Environment
+Private AMI: Images created by you, which are private by default; you can grant access to other users to launch your private images
+Private AMI: Images created by users and released to the community, so anyone can launch instances based on them and use them any way they like
+Paid AMI: You can create images providing specific functions that can be launched by anyone willing to pay you per each hour of usage on top of AWS charges
+
+11
+AWS Access Credentials
+Credential type you use depends on the type of AWS API
+Access Keys
+To make secure REST or Query protocol requests to any AWS service API
+Parts and Usage
+Access Key ID—Your Access Key ID identifies you as the party responsible for service requests; you include it in each request, so it's not a secret
+Secret Access Key—Each Access Key ID has a Secret Access Key associated with it; This key is used to calculate the digital signature that you include in the request; Your Secret Access Key is a secret, and only you and AWS should have it
+X.509 Certificates
+To make secure SOAP protocol requests to AWS service APIs
+Parts and Usage
+X.509 Certificate –  holds the public key and related metadata; You include it in each service request, so it's not a secret
+Private Key—Each certificate has a private key associated with it; Use the private key to calculate the digital signature to include in the request; Your private key is a secret, and only you should have it and AWS doesn't keep a copy
+Key Pairs
+To launch and then securely access your Amazon EC2 instances
+You can make as many as you like by giving friendly names (can’t replace any particular key pair)
+Private key that you keep with you; Public key that AWS keeps to allow access
+12
+Install your first AWS-hosted Web App!
+Install HTTP, PHP and MySQL – LAMP package in your instance
+Read Hostname, Instance ID, Zone and Security Group from Instances Data from metadata set and show it on the web page
+Clean-up resources – remove snapshot, detach/remove volume
+13
+Recap: Example Application Hosting in AWS
+14
+Cost Saving Considerations in AWS
+On-Demand Instances
+Pay for compute capacity by the hour with no long-term commitments
+Reserved Instances 
+Make a low, one-time payment for each instance you want to reserve and in turn receive a significant discount on the hourly charge for that instance 
+Spot Instances
+Bid on unused EC2 capacity and run those instances for as long as their bid exceeds the current Spot Price
+15
+Other Best Practices…
+AWS Lab Reading
+http://media.amazonwebservices.com/AWS_Cloud_Best_Practices.pdf 
+Design for failure and nothing will fail
+Decouple your components
+Implement elasticity
+Think parallel
+Keep dynamic data closer to compute and static data closer to user
+Know security and performance tradeoffs
+Another great link for high scalability, architecture case studies 
+http://highscalability.com - ‘Building bigger, faster, more reliable websites’
+YouTube Architecture
+http://highscalability.com/youtube-architecture 
+Good Dashboard Example:
+http://stackexchange.com/performance 
+16

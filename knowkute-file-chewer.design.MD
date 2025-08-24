@@ -49,10 +49,6 @@ knowkute-file-chewer/
 │         ├── chew_pipeline.py      # Full "File Chewer" pipeline: parse -> chunk -> embed -> store
 │         └── query_pipeline.py     # Full query pipeline: load embeddings → query → return result
 │
-│── scripts/                        
-│    ├── run_server.sh              # Run FastAPI app (uvicorn)
-│    ├── download_all.sh            # Calls `models/download_models.py` to fetch local models
-│    └── test_api.sh                # Curl/Postman test scripts for APIs
 │
 │── tests/                          # Unit & integration tests
 │    ├── __init__.py
