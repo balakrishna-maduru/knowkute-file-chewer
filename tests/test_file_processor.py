@@ -11,6 +11,12 @@ from pathlib import Path
 ])
 def test_file_extraction(filename, expected_text):
     resource_path = Path(__file__).parent / "resources" / filename
+    output_dir = Path(__file__).parent / "resources" / "output"
+    output_dir.mkdir(exist_ok=True)
     processor = FileProcessor()
     text = processor.extract_text(resource_path)
+    # Write output to file for inspection
+    output_file = output_dir / f"{filename}.txt"
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(text)
     assert expected_text.lower() in text.lower()
