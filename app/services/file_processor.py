@@ -26,8 +26,38 @@ class FileProcessor:
             return self._extract_pptx(file_path)
         elif suffix == ".txt":
             return self._extract_txt(file_path)
+        elif suffix in [".html", ".htm"]:
+            return self._extract_html(file_path)
+        elif suffix == ".mhtml":
+            return self._extract_mhtml(file_path)
+        elif suffix == ".xml":
+            return self._extract_xml(file_path)
         else:
             raise ValueError(f"Unsupported file type: {suffix}")
+    def _extract_html(self, file_path: Path) -> str:
+        from bs4 import BeautifulSoup
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+            soup = BeautifulSoup(f, "html.parser")
+            return soup.get_text(separator=" ", strip=True)
+
+    def _extract_mhtml(self, file_path: Path) -> str:
+        import email
+        from bs4 import BeautifulSoup
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+            msg = email.message_from_file(f)
+            for part in msg.walk():
+                if part.get_content_type() == "text/html":
+                    html = part.get_payload(decode=True)
+                    if html:
+                        soup = BeautifulSoup(html, "html.parser")
+                        return soup.get_text(separator=" ", strip=True)
+        return ""
+
+    def _extract_xml(self, file_path: Path) -> str:
+        import xml.etree.ElementTree as ET
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+        return " ".join([elem.text.strip() for elem in root.iter() if elem.text and elem.text.strip()])
 
     def _extract_pdf(self, file_path: Path) -> str:
         text = ""

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<root>
+  <greeting>Hello XML World</greeting>
+  <note>This is a test XML file.</note>
+</root>

@@ -9,7 +9,10 @@ from pathlib import Path
     ("baseline-assessment-tool-excel-196658893.xls", "Assessment"),
     ("file_example_XLS_5000.xls", "First Name"),
     ("AWS-Slides.pptx", "AWS"),
-    ("Knowkute_File_Chewer.txt", "Knowkute")
+    ("Knowkute_File_Chewer.txt", "Knowkute"),
+    ("Knowkute File Chewer - Swagger UI.mhtml", "Swagger UI"),
+    ("sample.html", "Hello HTML World"),
+    ("sample.xml", "Hello XML World")
 ])
 def test_file_extraction(filename, expected_text):
     resource_path = Path(__file__).parent / "resources" / "input" / filename
