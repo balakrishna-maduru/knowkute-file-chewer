@@ -1,15 +1,17 @@
 # Entry point for FastAPI app
 
+
 from fastapi import FastAPI
 from .config import *
+from app.routes.file_routes import router as file_router
+from app.routes.query_routes import router as query_router
+from app.routes.health_routes import router as health_router
 
 app = FastAPI(title="Knowkute File Chewer")
 
-# Routers will be included here
-# from .routes import file_routes, query_routes, health_routes
-# app.include_router(file_routes.router)
-# app.include_router(query_routes.router)
-# app.include_router(health_routes.router)
+app.include_router(file_router)
+app.include_router(query_router)
+app.include_router(health_router)
 
 @app.get("/")
 def root():
