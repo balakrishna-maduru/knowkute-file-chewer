@@ -1,80 +1,54 @@
 
 # Knowkute File Chewer
 
-Knowkute File Chewer is a modular document processing and querying system powered by open-source Large Language Models (LLMs) and embeddings. It allows users to upload, parse, chunk, embed, and search across a wide variety of document types (PDF, Word, Excel, PowerPoint, and plain text) using a FastAPI-based backend. All processing and storage are performed locally, ensuring data privacy and full control over your files and models. The architecture is designed for extensibility, maintainability, and privacy, making it suitable for private document search, knowledge base construction, and secure enterprise use cases.
+Knowkute File Chewer is a modular, extensible file extraction system. It allows users to upload and extract plain text from a wide variety of document types (PDF, Word, Excel, PowerPoint, HTML, MHTML, XML, images, and plain text) using a FastAPI-based backend. All processing is performed locally, ensuring data privacy and full control over your files. The architecture is designed for maintainability and privacy, making it suitable for secure enterprise and private use cases.
 
 ---
+
 
 ## 🚀 Features
 
-- **Local-Only LLMs & Embeddings:** All models are downloaded and run locally—no data leaves your machine.
-- **Multi-Format Support:** Handles PDF, DOCX, PPTX, XLSX, and TXT files.
-- **Modular Architecture:** Clean separation of API routes, business logic, pipelines, and data models for easy maintenance and extensibility.
-- **Efficient Chunking & Embedding:** Documents are parsed, cleaned, split into meaningful chunks, and embedded for fast vector search.
-- **FastAPI REST API:** Upload files, trigger processing, and query your data via simple HTTP endpoints.
-- **Extensible Storage:** Chunks and embeddings are stored locally (e.g., ChromaDB, FAISS) but can be extended to use databases or distributed storage.
+- **Local-Only Processing:** All file parsing and extraction is performed locally—no data leaves your machine.
+- **Multi-Format Support:** Handles PDF, DOCX, PPTX, XLSX, HTML, MHTML, XML, images, and TXT files.
+- **Modular Architecture:** Clean separation of API routes and business logic for easy maintenance and extensibility.
+- **FastAPI REST API:** Upload files and extract plain text via simple HTTP endpoints.
+- **Robust Fallbacks:** Includes OCR for PDFs, HTML/MHTML fallback, and XML text extraction.
 - **Health & Status Endpoints:** Built-in endpoints for monitoring and debugging.
-- **Asynchronous Processing:** File ingestion is handled as a background task for responsiveness.
 
 ---
+
 
 ## 🗂️ Project Structure
 
 ```
 knowkute-file-chewer/
-│── models/                         # Pre-downloaded local LLMs & Embedding Models
-│    ├── download_models.py         # Script to fetch all required models (LLaMA, embeddings, etc.)
-│    └── <downloaded-model-folders> # HuggingFace / GGUF / Local model binaries
+│── models/                         # Pre-downloaded local models and configs
+│    ├── download_models.py         # Script to fetch all required models
+│    └── <model files/folders>      # Model binaries, configs, tokenizers, etc.
 │── app/
-│    │── main.py                    # Entry point (FastAPI app startup, router mounting)
-│    │── config.py                  # Centralized config using Pydantic's BaseSettings
+│    │── main.py                    # FastAPI app startup, router mounting
+│    │── config.py                  # Centralized config (if used)
 │    │── __init__.py
 │
 │    ├── routes/                    # REST API endpoints
 │    │    ├── __init__.py
-│    │    ├── file_routes.py        # Upload & process file APIs
-│    │    ├── query_routes.py       # Query APIs on processed chunks
+│    │    ├── file_routes.py        # Upload & extract file APIs
 │    │    └── health_routes.py      # Healthcheck / status endpoints
 │
-│    ├── services/                  # Reusable processing & business logic
+│    ├── services/                  # File processing logic
 │    │    ├── __init__.py
-│    │    ├── file_processor.py     # File parsing & chunking (PDF, Word, Excel, PPT, etc.)
-│    │    ├── chunk_manager.py      # Sentence splitting, chunk creation
-│    │    ├── embedding_service.py  # Handles embedding with llama_index + local models
-│    │    ├── query_service.py      # Runs queries over stored vectors
-│    │    ├── generation_service.py # Generates answers using a local LLM (Generation)
-│    │    └── storage_service.py    # Persists chunks/vectors locally (e.g., ChromaDB)
+│    │    └── file_processor.py     # File type detection & plain text extraction
 │
-│    ├── schemas/                   # Python data models (Pydantic Schemas)
-│    │    ├── __init__.py
-│    │    ├── file_schema.py         # File metadata schema
-│    │    ├── chunk_schema.py        # Chunk schema
-│    │    └── query_schema.py        # Query request/response schemas
-│
-│    ├── utils/                     # Shared utilities
-│    │    ├── __init__.py
-│    │    ├── logger.py             # Logging config
-│    │    ├── file_utils.py         # File save/load helpers
-│    │    └── text_utils.py         # Text cleaning, sentence splitting helpers
-│
-│    └── pipelines/                 # High-level orchestration
-│         ├── __init__.py
-│         ├── chew_pipeline.py      # Full "File Chewer" pipeline: parse -> chunk -> embed -> store
-│         └── query_pipeline.py     # Full query pipeline: load embeddings → query → return result
-│
-│
-│── tests/                          # Unit & integration tests
+│── tests/                          # API and integration tests
 │    ├── __init__.py
-│    ├── test_file_processor.py
-│    ├── test_chunk_manager.py
-│    ├── test_embedding_service.py
-│    ├── test_query_service.py
-│    └── test_endpoints.py
+│    ├── test_file_upload_api.py
+│    ├── test_file_upload_all.py
+│    └── resources/
+│         ├── input/                # Test input files
+│         └── output/               # Test output files
 │
-│── data/                           # Temporary files, storage
-│    ├── uploads/                   # Uploaded raw files
-│    ├── processed/                 # (Optional) Processed intermediate files
-│    └── index_store/               # Persisted vector store (e.g., ChromaDB, FAISS)
+│── data/                           # Uploaded files (runtime)
+│    └── uploads/                   # Uploaded raw files
 │
 │── .gitignore                      # Git ignore rules
 │── README.md                       # Project documentation
@@ -93,42 +67,50 @@ knowkute-file-chewer/
 
 ---
 
+
 ## 🧩 Component Responsibilities
 
-### 1. Schemas (`app/schemas/`)
-- `file_schema.py`: File metadata schema (id, name, path, status).
-- `chunk_schema.py`: Chunk schema (id, file_id, text, embedding).
-- `query_schema.py`: Query request/response schemas.
-
-### 2. Routes (`app/routes/`)
+### 1. Routes (`app/routes/`)
 - `file_routes.py`: 
-	- `POST /files/upload`: Upload a file and trigger the chewing pipeline.
-	- `GET /files/{file_id}/status`: Retrieve file processing status.
-- `query_routes.py`: 
-	- `POST /query`: Submit a query and receive a generated answer.
+  - `POST /files/upload`: Upload a file and extract plain text.
 - `health_routes.py`: 
-	- `/health`: Service and model health checks.
+  - `/health`: Service health checks.
 
-### 3. Services (`app/services/`)
-- `file_processor.py`: Detects file type and extracts raw text.
-- `chunk_manager.py`: Cleans and splits text into chunks.
-- `embedding_service.py`: Generates vector embeddings for text chunks.
-- `query_service.py`: Vector similarity search for relevant context.
-- `generation_service.py`: Synthesizes answers using a local LLM.
-- `storage_service.py`: Manages persistence of chunks and embeddings.
+### 2. Services (`app/services/`)
+- `file_processor.py`: Detects file type and extracts plain text from files (PDF, DOCX, PPTX, XLSX, HTML, MHTML, XML, images, TXT, etc.), with robust fallbacks (OCR, HTML/MHTML, XML tree extraction).
 
-### 4. Pipelines (`app/pipelines/`)
-- `chew_pipeline.py`: Orchestrates file ingestion (parse → chunk → embed → store).
-- `query_pipeline.py`: Orchestrates query flow (embed → retrieve → generate → respond).
+### 3. Models Directory (`models/`)
+- Stores all local models and configs required for file parsing and extraction.
+- `download_models.py`: Script to fetch models if needed.
 
-### 5. Utils (`app/utils/`)
-- `logger.py`: Structured logging.
-- `file_utils.py`: File save/load helpers.
-- `text_utils.py`: Text cleaning and sentence splitting.
+---
 
-### 6. Models Directory (`models/`)
-- Stores all local LLM and embedding models.
-- `download_models.py`: Script to fetch models from Hugging Face.
+## 📦 Included Models and Artifacts
+
+The `models/` directory contains all the local LLM and embedding models, tokenizers, and configuration files required for file parsing, chunking, and querying. Below is a list of the main files and folders:
+
+- **Model binaries:**
+  - `pytorch_model.bin` (PyTorch model)
+  - `model.safetensors` (Safetensors format)
+  - `model.onnx` (ONNX format)
+  - `tf_model.h5` (TensorFlow model)
+  - `flax_model.msgpack` (Flax model)
+  - `rust_model.ot` (Rust model)
+- **Tokenizers and configs:**
+  - `tokenizer.json`, `tokenizer_config.json`, `sentencepiece.bpe.model`, `vocab.json`, `vocab.txt`, `merges.txt`, `special_tokens_map.json`
+- **Pooling and modules:**
+  - `1_Pooling/`, `modules.json`
+- **ONNX/OpenVINO:**
+  - `onnx/`, `openvino/`
+- **Model configs:**
+  - `config.json`, `config_sentence_transformers.json`, `data_config.json`, `generation_config.json`, `generation_config_for_summarization.json`, `sentence_bert_config.json`
+- **Scripts:**
+  - `download_models.py` (script to fetch all required models)
+  - `train_script.py`
+- **Other:**
+  - `.cache/`, `.gitattributes`, `README.md`
+
+> All these files are required for local, private, and robust file processing using LlamaIndex readers. Make sure to run `poetry run python models/download_models.py` after setup to ensure all models are present.
 
 ---
 
@@ -157,6 +139,7 @@ poetry run python models/download_models.py
 ### Running the Server
 
 ```bash
+poetry run uvicorn app.main:app --reload
 ```
 
 The API will be available at `http://localhost:8000`.
@@ -178,14 +161,10 @@ poetry run pytest
 
 ## 📝 Workflow
 
-### 1. File Ingestion (The "Chew" Pipeline)
-- Upload a file via `POST /files/upload`.
-- File is saved, status tracked, and processed in the background (parse, chunk, embed, store).
-- Status can be checked via `GET /files/{file_id}/status`.
 
-### 2. Querying (The RAG Pipeline)
-- Submit a query via `POST /query`.
-- System retrieves relevant chunks and generates an answer using the local LLM.
+### 1. File Ingestion
+- Upload a file via `POST /files/upload`.
+- File is saved and plain text is extracted and returned in the response.
 
 ---
 
@@ -209,6 +188,57 @@ poetry run pytest
 - [LlamaIndex](https://github.com/jerryjliu/llama_index)
 - [Sentence Transformers](https://www.sbert.net/)
 - [Hugging Face](https://huggingface.co/)
+
+---
+
+## 🖥️ Setup on a New Laptop (from Scratch)
+
+Follow these steps to set up Knowkute File Chewer on a new machine:
+
+### 1. Install Prerequisites
+- **Python 3.11**: Download and install from [python.org](https://www.python.org/downloads/).
+- **Poetry**: Install via pip:
+  ```bash
+  pip install poetry
+  ```
+- **Git**: Download and install from [git-scm.com](https://git-scm.com/downloads).
+- **Tesseract OCR** (for PDF OCR fallback):
+  - **macOS**: `brew install tesseract`
+  - **Ubuntu**: `sudo apt-get install tesseract-ocr`
+  - **Windows**: Download from [UB Mannheim builds](https://github.com/UB-Mannheim/tesseract/wiki).
+
+### 2. Clone the Repository
+```bash
+git clone https://github.com/balakrishna-maduru/knowkute-file-chewer.git
+cd knowkute-file-chewer
+```
+
+### 3. Install Python Dependencies
+```bash
+poetry install
+```
+
+### 4. Download Required Models
+```bash
+poetry run python models/download_models.py
+```
+
+### 5. Start the API Server
+```bash
+poetry run uvicorn app.main:app --reload
+```
+- The API will be available at: http://localhost:8000
+- Interactive docs: http://localhost:8000/docs
+
+### 6. (Optional) Run Tests
+```bash
+poetry run pytest --maxfail=3 --disable-warnings -v
+```
+
+### 7. (Optional) Clean Up Unwanted Files and Empty Directories
+```bash
+find . -type d -empty -delete
+```
 
 ---
 

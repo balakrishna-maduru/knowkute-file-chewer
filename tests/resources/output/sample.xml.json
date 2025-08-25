@@ -1,0 +1,7 @@
+{
+  "file_id": "sample.xml",
+  "num_chunks": 1,
+  "chunks": [
+    "Hello XML World\n  This is a test XML file."
+  ]
+}
