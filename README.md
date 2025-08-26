@@ -85,30 +85,76 @@ knowkute-file-chewer/
 
 ---
 
+
+
 ## 📦 Included Models and Artifacts
 
-The `models/` directory contains all the local LLM and embedding models, tokenizers, and configuration files required for file parsing, chunking, and querying. Below is a list of the main files and folders:
+The `models/` directory contains all the local models, tokenizers, and configuration files required for file parsing and extraction. These models are downloaded automatically using the `models/download_models.py` script. Below is a detailed list of the main files and folders, with source URLs and usage notes where applicable:
 
-- **Model binaries:**
-  - `pytorch_model.bin` (PyTorch model)
-  - `model.safetensors` (Safetensors format)
-  - `model.onnx` (ONNX format)
-  - `tf_model.h5` (TensorFlow model)
-  - `flax_model.msgpack` (Flax model)
-  - `rust_model.ot` (Rust model)
-- **Tokenizers and configs:**
-  - `tokenizer.json`, `tokenizer_config.json`, `sentencepiece.bpe.model`, `vocab.json`, `vocab.txt`, `merges.txt`, `special_tokens_map.json`
-- **Pooling and modules:**
-  - `1_Pooling/`, `modules.json`
-- **ONNX/OpenVINO:**
-  - `onnx/`, `openvino/`
-- **Model configs:**
-  - `config.json`, `config_sentence_transformers.json`, `data_config.json`, `generation_config.json`, `generation_config_for_summarization.json`, `sentence_bert_config.json`
-- **Scripts:**
-  - `download_models.py` (script to fetch all required models)
-  - `train_script.py`
-- **Other:**
-  - `.cache/`, `.gitattributes`, `README.md`
+
+### Model Binaries
+- `pytorch_model.bin` (PyTorch model)
+  - **Source:** [Hugging Face](https://huggingface.co/) (see `download_models.py`)
+  - **Usage:** Used for local inference with PyTorch backend.
+- `model.safetensors` (Safetensors format)
+  - **Source:** [Hugging Face](https://huggingface.co/docs/safetensors/index)
+  - **Usage:** Secure, fast model loading alternative to PyTorch.
+- `model.onnx` (ONNX format)
+  - **Source:** [ONNX Model Zoo](https://onnx.ai/)
+  - **Usage:** For inference with ONNX Runtime or compatible backends.
+- `tf_model.h5` (TensorFlow model)
+  - **Source:** [Hugging Face](https://huggingface.co/) or [TensorFlow Hub](https://tfhub.dev/)
+  - **Usage:** For TensorFlow-based inference.
+- `flax_model.msgpack` (Flax model)
+  - **Source:** [Hugging Face](https://huggingface.co/)
+  - **Usage:** For JAX/Flax-based inference.
+- `rust_model.ot` (Rust model)
+  - **Source:** [Hugging Face](https://huggingface.co/)
+  - **Usage:** For Rust-based inference (rare, advanced use).
+
+
+### Tokenizers and Configs
+- `tokenizer.json`, `tokenizer_config.json`, `sentencepiece.bpe.model`, `vocab.json`, `vocab.txt`, `merges.txt`, `special_tokens_map.json`
+  - **Source:** [Hugging Face](https://huggingface.co/) (model card/tokenizer tab)
+  - **Usage:** Required for text preprocessing and tokenization for all model types.
+
+
+### Pooling and Modules
+- `1_Pooling/` (directory), `modules.json`
+  - **Source:** [Hugging Face](https://huggingface.co/)
+  - **Usage:** Used for pooling layers and module configs in sentence transformers.
+
+
+### ONNX Models
+- `onnx/` (directory)
+    - `model.onnx`, `model_O1.onnx`, `model_O2.onnx`, `model_O3.onnx`, `model_O4.onnx`, `model_qint8_arm64.onnx`, `model_qint8_avx512.onnx`, `model_qint8_avx512_vnni.onnx`, `model_quint8_avx2.onnx`
+  - **Source:** [ONNX Model Zoo](https://onnx.ai/) or [Hugging Face](https://huggingface.co/)
+  - **Usage:** For optimized inference on various hardware (CPU, ARM, AVX, etc.).
+
+
+### OpenVINO Models
+- `openvino/` (directory)
+    - `openvino_model.bin`, `openvino_model.xml`, `openvino_model_qint8_quantized.bin`, `openvino_model_qint8_quantized.xml`
+  - **Source:** [OpenVINO Model Zoo](https://docs.openvino.ai/latest/omz_models.html)
+  - **Usage:** For optimized inference on Intel hardware.
+
+
+### Model Configs
+- `config.json`, `config_sentence_transformers.json`, `data_config.json`, `generation_config.json`, `generation_config_for_summarization.json`, `sentence_bert_config.json`
+  - **Source:** [Hugging Face](https://huggingface.co/)
+  - **Usage:** Model architecture, generation, and data configs for all supported backends.
+
+
+### Scripts
+- `download_models.py` (script to fetch all required models)
+  - **Usage:** Run `poetry run python models/download_models.py` to download all required models and configs from Hugging Face or other sources.
+- `train_script.py`
+  - **Usage:** (Optional) For advanced users to fine-tune or train models locally.
+
+### Other
+- `.cache/` (directory)
+- `.gitattributes`
+- `README.md`
 
 > All these files are required for local, private, and robust file processing using LlamaIndex readers. Make sure to run `poetry run python models/download_models.py` after setup to ensure all models are present.
 
